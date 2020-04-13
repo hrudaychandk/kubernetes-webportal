@@ -25,6 +25,10 @@ spec:
     matchLabels:
       app: webportal-users
       tier: frontend
+  volumes:
+    - name: db-user-pass
+      secret:
+        secretName: db-user-pass
   template:
     metadata:
       labels:
@@ -35,4 +39,8 @@ spec:
       - name: webportal-users
         image: hshar/users
         ports:
-        - containerPort: 80
+          - containerPort: 80
+        volumeMounts:
+          - name: db-user-pass
+            mountPath: "/var/secrets"
+            readOnly: true
