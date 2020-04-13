@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: example.com
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /users
+        pathType: Prefix
+        backend:
+          serviceName: webportal-users-svc
+          servicePort: 80
+      - path: /admin
+        pathType: Prefix
+        backend:
+          serviceName: webportal-admin-svc
+          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: webportal-users-svc
+          servicePort: 80
