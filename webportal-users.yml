@@ -6,7 +6,7 @@ spec:
   selector:
     app: webportal-users
     tier: frontend
-  type: NodePort
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 80
