@@ -25,16 +25,16 @@ spec:
     matchLabels:
       app: webportal-admin
       tier: frontend
-  volumes:
-    - name: db-user-pass
-      secret:
-        secretName: db-user-pass
   template:
     metadata:
       labels:
         app: webportal-admin
         tier: frontend
     spec:
+      volumes:
+        - name: db-user-pass
+          secret:
+            secretName: db-user-pass
       containers:
       - name: webportal-admin
         image: hshar/admin
