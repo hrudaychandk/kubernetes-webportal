@@ -23,15 +23,15 @@ spec:
     matchLabels:
       app: mysql-db
       tier: backend
-  volumes:
-    - name: pv-storage
-      persistentVolumeClaim: pv-claim
   template:
     metadata:
       labels:
         app: mysql-db
         tier: backend
     spec:
+      volumes:
+        - name: pv-storage
+          persistentVolumeClaim: pv-claim
       containers:
         - name: mysql-db
           image: mysql:5.5
