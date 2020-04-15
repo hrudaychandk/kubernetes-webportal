@@ -31,7 +31,8 @@ spec:
     spec:
       volumes:
         - name: pv-storage
-          persistentVolumeClaim: pv-claim
+          persistentVolumeClaim: 
+            claimName: pv-claim
       containers:
         - name: mysql-db
           image: mysql:5.5
