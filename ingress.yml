@@ -11,7 +11,7 @@ spec:
       - path: /users
         backend:
           serviceName: webportal-users-svc
-          servicePort: 80
+          servicePort: 31159
       - path: /admin
         backend:
           serviceName: webportal-admin-svc
@@ -19,4 +19,4 @@ spec:
       - path: /
         backend:
           serviceName: webportal-users-svc
-          servicePort: 80
+          servicePort: 31159
