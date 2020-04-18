@@ -3,20 +3,20 @@ kind: Ingress
 metadata:
   name: test-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
-      paths:
-        - path: /users
-          backend:
-            serviceName: webportal-users-svc
-            servicePort: 80
-        - path: /admin
-          backend:
-            serviceName: webportal-admin-svc
-            servicePort: 80
-        - path: /
-          backend:
-            serviceName: webportal-users-svc
-            servicePort: 80
+    - http:
+        paths:
+          - path: /users
+            backend:
+              serviceName: webportal-users-svc
+              servicePort: 80
+          - path: /admin
+            backend:
+              serviceName: webportal-admin-svc
+              servicePort: 80
+          - path: /
+            backend:
+              serviceName: webportal-users-svc
+              servicePort: 80
