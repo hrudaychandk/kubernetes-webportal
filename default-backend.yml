@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-http-backend
+spec:
+  selector:
+    app: default-backend
+    tier: backend
+  type: ClusetrIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-backend-deployment
+  labels:
+    app: default-backend
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-backend
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: default-backend
+        tier: backend
+    spec:
+      tolerations:
+        - key: "tier"
+          operator: "Equal"
+          value: "backend"
+          effect: "NoSchedule"
+      containers:
+        - name: default-backend
+          image: httpd
+          ports:
+            - containerPort: 80
